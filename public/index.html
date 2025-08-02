@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List App with Calendar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="user-profile">
+                <div class="user-avatar" id="userAvatar">
+                    <img id="avatarImg" src="" alt="User Avatar" style="display: none;">
+                    <div id="avatarPlaceholder" class="avatar-placeholder">👤</div>
+                    <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                </div>
+                <div class="user-info">
+                    <input type="text" id="usernameInput" placeholder="Enter your name..." maxlength="30">
+                    <button id="saveProfileBtn" class="save-profile-btn" title="Save Profile">💾</button>
+                </div>
+            </div>
+            <h1>My Todo List</h1>
+            <div class="view-toggle">
+                <button id="listViewBtn" class="view-btn active">List View</button>
+                <button id="calendarViewBtn" class="view-btn">Calendar View</button>
+            </div>
+        </header>
+        
+        <!-- List View -->
+        <div id="listView" class="view-content">
+            <div class="todo-input">
+                <input type="text" id="todoInput" placeholder="Add a new todo..." maxlength="200">
+                <input type="date" id="dueDateInput" title="Due date (optional)">
+                <input type="datetime-local" id="reminderInput" title="Reminder time (optional)">
+                <div class="mobile-button-row">
+                    <div class="file-input-wrapper">
+                        <input type="file" id="todoPhotoInput" accept="image/*" style="display: none;">
+                        <button type="button" id="photoBtn" class="photo-btn" title="Add photo">📷</button>
+                    </div>
+                    <button id="addBtn">
+                        <span class="btn-text">Add Todo</span>
+                        <span class="btn-icon">+</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="active">Active</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+                <button class="filter-btn" data-filter="today">Due Today</button>
+                <button class="filter-btn" data-filter="overdue">Overdue</button>
+            </div>
+            
+            <ul id="todoList" class="todo-list">
+                <!-- Todos will be dynamically added here -->
+            </ul>
+            
+            <div class="todo-stats">
+                <span id="todoCount">0 items left</span>
+                <button id="clearCompleted">Clear Completed</button>
+            </div>
+        </div>
+        
+        <!-- Calendar View -->
+        <div id="calendarView" class="view-content hidden">
+            <div class="calendar-header">
+                <button id="prevMonth">&lt;</button>
+                <h2 id="currentMonth"></h2>
+                <button id="nextMonth">&gt;</button>
+            </div>
+            <div class="calendar-grid" id="calendarGrid">
+                <!-- Calendar will be generated here -->
+            </div>
+            <div class="selected-date-todos">
+                <h3 id="selectedDateTitle">Select a date to view todos</h3>
+                <ul id="selectedDateTodos" class="todo-list">
+                    <!-- Selected date todos will appear here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
